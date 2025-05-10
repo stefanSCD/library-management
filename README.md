@@ -42,7 +42,7 @@ Before you begin, ensure you have the following installed:
 - Windows 10 or later
 - [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.15-windows-x64-installer?cid=getdotnetcore)
 - [SQL Server LocalDB 2019](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb) (included with Visual Studio 2022)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) (for development only)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 
 ### Database Configuration
 
