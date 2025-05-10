@@ -5,7 +5,7 @@
 
 A comprehensive Windows desktop application for managing library operations, built with WPF and SQL Server LocalDB.
 
-![Library Management System Dashboard]
+
 
 ## ✨ Features
 
