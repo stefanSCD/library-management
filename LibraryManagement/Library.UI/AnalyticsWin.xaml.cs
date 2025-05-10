@@ -1,15 +1,12 @@
 ﻿using LibraryManagement.Library.Repository.DataAccess;
 using LibraryManagement.Library.Repository.DataAccess.LibraryDataSetTableAdapters;
+using LibraryManagement.Library.Repository.Database;
 using LiveCharts;
 using LiveCharts.Wpf;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.IO;
-using LibraryManagement.Library.Repository.Database;
 
 namespace LibraryManagement.Library.UI
 {

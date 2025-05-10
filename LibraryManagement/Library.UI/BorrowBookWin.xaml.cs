@@ -66,6 +66,11 @@ namespace LibraryManagement.Library.UI
                 MessageBox.Show("Please enter a valid borrower name.");
                 return;
             }
+            if(quantity < 1)
+            {
+                MessageBox.Show("Please enter a valid quantity (>=1).");
+                return;
+            }
             LibraryDataSet.AvailableBooksDataTable availableBooks = new LibraryDataSet.AvailableBooksDataTable();
             AvailableBooksTableAdapter adapter = new AvailableBooksTableAdapter();
             adapter.Connection = new SqlConnection(DatabaseHelper.ConnectionString);

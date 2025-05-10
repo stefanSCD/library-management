@@ -14,22 +14,18 @@ namespace LibraryManagement.Library.Repository.DataAccess
             _adapter.Connection = new System.Data.SqlClient.SqlConnection(DatabaseHelper.ConnectionString);
         }
 
-        // add a new analytic
         public void AddLoan(Loan loan)
         {
             _adapter.AddAnalytics(loan.BookId, loan.Quantity, loan.BorrowDate, loan.BorrowerName);
         }
-        // delete a analytic
         public void DeleteLoan(int id)
         {
             _adapter.DeleteByAnalyticsId(id);
         }
-        // update a loan
         public void UpdateLoan(Loan loan)
         {
             _adapter.UpdateByAnalyticsId(loan.BookId, loan.Quantity, loan.BorrowDate, loan.BorrowerName, loan.LoanId);
         }
-        // get all analytics
         public List<Loan> GetAllLoans()
         {
             var dataTable = _adapter.GetData();
@@ -41,7 +37,6 @@ namespace LibraryManagement.Library.Repository.DataAccess
             }
             return loans;
         }
-        // count analytics
         public int CountLoans()
         {
             var dataTable = _adapter.GetData();

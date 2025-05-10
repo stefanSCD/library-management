@@ -7,7 +7,6 @@ namespace LibraryManagement.Library.Repository.DataAccess
     class LoanRepository : ILoanRepository
     {
         private readonly LibraryDataSetTableAdapters.LoanTableAdapter _adapter;
-        // add a new loan
 
         public LoanRepository()
         {
@@ -18,17 +17,14 @@ namespace LibraryManagement.Library.Repository.DataAccess
         {
             _adapter.AddLoan(loan.BookId, loan.Quantity, loan.BorrowDate, loan.BorrowerName);
         }
-        // delete a loan
         public void DeleteLoan(int id)
         {
             _adapter.DeleteByLoanId(id);
         }
-        // update a loan
         public void UpdateLoan(Loan loan)
         {
             _adapter.UpdateByLoanId(loan.BookId, loan.Quantity, loan.BorrowDate, loan.BorrowerName, loan.LoanId);
         }
-        // get all loans
         public List<Loan> GetAllLoans()
         {
             var dataTable = _adapter.GetData();
@@ -40,7 +36,6 @@ namespace LibraryManagement.Library.Repository.DataAccess
             }
             return loans;
         }
-        // count loans
         public int CountLoans()
         {
             var dataTable = _adapter.GetData();
@@ -52,6 +47,4 @@ namespace LibraryManagement.Library.Repository.DataAccess
             return count;
         }
     }
-    
-    
 }

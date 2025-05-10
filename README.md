@@ -14,7 +14,28 @@ A comprehensive Windows desktop application for managing library operations, bui
 - 📊 **Analytics Dashboard** - Visual reports with charts and statistics
 - 🔍 **Advanced Search** - Find books by title or author
 
-## 🚀 Getting Started
+## 🌟 Innovative Feature: Analytics Dashboard
+
+For requirement #7, I implemented an **Analytics Dashboard** that provides comprehensive insights into library operations through interactive charts and visualizations.
+
+
+#### 📊 Visual Analytics Components:
+
+1. **Most Borrowed Books Chart (Pie Chart)**
+   - Displays the top N most borrowed books (configurable: 5, 10, or 20 books)
+   - Visual representation with percentages
+   - Helps identify popular titles for acquisition decisions
+   - Interactive legend showing book titles and authors
+
+2. **Borrowing Trends Analysis (Line Chart)**
+   - Shows borrowing patterns over time
+   - Three time period options:
+     - Daily (last 30 days)
+     - Weekly (last 6 months)
+     - Monthly (last 12 months)
+   - Helps identify peak borrowing periods
+   - Useful for staff scheduling and inventory management
+
 
 ### Prerequisites
 
@@ -29,5 +50,4 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/library-management-system.git
-   cd library-management-system
+   git clone https://github.com/stefanSCD/library-management.git

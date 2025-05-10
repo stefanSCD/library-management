@@ -11,7 +11,6 @@
         x:Name="AddBookWindow"
         Closed="AddBookWindow_Closed">
     <Window.Resources>
-        <!-- Stiluri pentru butoane -->
         <Style x:Key="PrimaryButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#007ACC"/>
             <Setter Property="Foreground" Value="White"/>
@@ -27,7 +26,6 @@
             <Setter Property="Padding" Value="15,5"/>
         </Style>
 
-        <!-- Stiluri pentru câmpuri -->
         <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
@@ -48,7 +46,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Titlu Fereastră -->
         <StackPanel Grid.Row="0" Margin="0,0,0,25">
             <TextBlock Text="Add a new book" 
                        HorizontalAlignment="Center"
@@ -57,7 +54,6 @@
             <Separator Margin="0,10,0,0" Background="#DDDDDD"/>
         </StackPanel>
 
-        <!-- Formular -->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -66,26 +62,22 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Titlu Carte -->
             <StackPanel Grid.Row="0" Margin="0,0,0,15">
                 <TextBlock Text="Title:" Style="{StaticResource FieldLabelStyle}"/>
                 <TextBox x:Name="txtTitle" Style="{StaticResource FieldInputStyle}"/>
             </StackPanel>
 
-            <!-- Autor -->
             <StackPanel Grid.Row="1" Margin="0,0,0,15">
                 <TextBlock Text="Author:" Style="{StaticResource FieldLabelStyle}"/>
                 <TextBox x:Name="txtAuthor" Style="{StaticResource FieldInputStyle}"/>
             </StackPanel>
 
-            <!-- Cantitate -->
             <StackPanel Grid.Row="2" Margin="0,0,0,15">
                 <TextBlock Text="Quantity:" Style="{StaticResource FieldLabelStyle}"/>
                 <TextBox x:Name="txtQuantity" Style="{StaticResource FieldInputStyle}"/>
             </StackPanel>
         </Grid>
 
-        <!-- Butoane Acțiuni -->
         <Grid Grid.Row="2" Margin="0,25,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -93,14 +85,11 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Informații -->
             <TextBlock Grid.Column="0" 
                        Text="* All fields are required" 
                        VerticalAlignment="Center" 
                        Foreground="#888888"
                        FontStyle="Italic"/>
-
-            <!-- Buton Anulare -->
             <Button x:Name="btnCancel"
                     Click="btnCancel_Click"
                     Grid.Column="1" 
@@ -109,8 +98,6 @@
                     Height="35" 
                     Margin="0,0,15,0"
                     Style="{StaticResource SecondaryButtonStyle}"/>
-
-            <!-- Buton Adăugare -->
             <Button x:Name="btnAdd"
                     Click="btnAdd_Click"
                     Grid.Column="2" 

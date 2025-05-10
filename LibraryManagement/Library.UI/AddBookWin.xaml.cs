@@ -24,7 +24,6 @@ namespace LibraryManagement.Library.UI
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            // Validate the input fields
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
                 MessageBox.Show("Please enter a title.");
@@ -49,6 +48,11 @@ namespace LibraryManagement.Library.UI
                 
             }
             else
+            {
+                MessageBox.Show("Please enter a valid quantity (1,2,3...).");
+                return;
+            }
+            if(quantity < 1)
             {
                 MessageBox.Show("Please enter a valid quantity (1,2,3...).");
                 return;

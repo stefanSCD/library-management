@@ -78,16 +78,13 @@ namespace LibraryManagement
             }
             else
             {
-                // Golește colecția existentă
                 Books.Clear();
 
-                // Adaugă rezultatele căutării
                 foreach (var book in books)
                 {
                     Books.Add(book);
                 }
 
-                // Setează sursa pentru DataGrid
                 dgQuickSearchResults.ItemsSource = Books;
             }
         }
@@ -123,6 +120,7 @@ namespace LibraryManagement
         private void MainWindow_Activated(object sender, EventArgs e)
         {
             dgQuickSearchResults.ItemsSource = null;
+            this.txtQuickSearch.Text = "";
             LoadWindow();
         }
 

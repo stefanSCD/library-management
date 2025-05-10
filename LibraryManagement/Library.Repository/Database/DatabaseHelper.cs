@@ -43,7 +43,6 @@ namespace LibraryManagement.Library.Repository.Database
             try
             {
                 string fullPath = GetDatabasePath();
-                Console.WriteLine($"Baza de date găsită la: {fullPath}");
 
                 DetachDatabaseIfAttached();
 
@@ -54,11 +53,10 @@ namespace LibraryManagement.Library.Repository.Database
             }
             catch (Exception ex)
             {
-                throw new Exception($"Eroare la configurarea conexiunii: {ex.Message}", ex);
+                throw new Exception($"Error configuring connection with database: {ex.Message}", ex);
             }
         }
 
-        // Restul metodelor (DetachDatabaseIfAttached, GetDatabasePath) rămân la fel
         private static void DetachDatabaseIfAttached()
         {
             using (var connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True"))
@@ -67,7 +65,6 @@ namespace LibraryManagement.Library.Repository.Database
                 {
                     connection.Open();
 
-                    // Închide toate conexiunile active către LibraryDB
                     var killConnectionsCmd = new SqlCommand(@"
                 IF DB_ID('LibraryDB') IS NOT NULL
                 BEGIN
@@ -76,7 +73,6 @@ namespace LibraryManagement.Library.Repository.Database
 
                     killConnectionsCmd.ExecuteNonQuery();
 
-                    // Detașează baza de date
                     var detachCmd = new SqlCommand(@"
                 IF DB_ID('LibraryDB') IS NOT NULL
                 BEGIN
@@ -87,18 +83,15 @@ namespace LibraryManagement.Library.Repository.Database
                 }
                 catch (Exception ex)
                 {
-                    // Log eroarea dar continuă - poate baza de date nu era atașată
-                    Console.WriteLine($"Notă la detașare: {ex.Message}");
+                    Console.WriteLine($"Error detaching: {ex.Message}");
                 }
             }
         }
 
 
         private static string GetDatabasePath() {
-            // Pornește de la directorul unde rulează aplicația
             string currentDir = AppDomain.CurrentDomain.BaseDirectory;
 
-            // Caută în sus în structura de directoare până găsești Library.Repository
             while (currentDir != null)
             {
                 var libraryRepoPath = Path.Combine(currentDir, "Library.Repository", "Database", "LibraryDB.mdf");
@@ -107,7 +100,6 @@ namespace LibraryManagement.Library.Repository.Database
                     return libraryRepoPath;
                 }
 
-                // Caută și direct în Database
                 var databasePath = Path.Combine(currentDir, "Database", "LibraryDB.mdf");
                 if (File.Exists(databasePath))
                 {
@@ -117,7 +109,7 @@ namespace LibraryManagement.Library.Repository.Database
                 currentDir = Directory.GetParent(currentDir)?.FullName;
             }
 
-            throw new FileNotFoundException("Nu s-a putut găsi LibraryDB.mdf");
+            throw new FileNotFoundException("LibraryDB.mdf not found!");
         }
     }
 }

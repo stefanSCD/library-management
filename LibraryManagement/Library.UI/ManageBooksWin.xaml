@@ -12,7 +12,6 @@
         Activated="ManageBooksWindow_Activated"
         Closed="ManageBooksWindow_Closed">
     <Window.Resources>
-        <!-- Stiluri pentru butoane -->
         <Style x:Key="PrimaryButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#007ACC"/>
             <Setter Property="Foreground" Value="White"/>
@@ -48,7 +47,6 @@
             <Setter Property="FontSize" Value="12"/>
         </Style>
 
-        <!-- Stiluri pentru câmpuri -->
         <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="0,0,0,2"/>
@@ -71,7 +69,6 @@
             <Setter Property="FontSize" Value="12"/>
         </Style>
 
-        <!-- Stiluri pentru DataGrid -->
         <Style x:Key="BooksDataGridStyle" TargetType="DataGrid">
             <Setter Property="AutoGenerateColumns" Value="False"/>
             <Setter Property="IsReadOnly" Value="True"/>
@@ -86,7 +83,6 @@
             <Setter Property="FontSize" Value="12"/>
         </Style>
 
-        <!-- Stiluri pentru GroupBox -->
         <Style x:Key="ManageBoxStyle" TargetType="GroupBox">
             <Setter Property="BorderBrush" Value="#CCCCCC"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -105,7 +101,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Titlu Fereastră -->
         <StackPanel Grid.Row="0" Margin="0,0,0,10">
             <TextBlock Text="Manage Books" 
                        HorizontalAlignment="Center"
@@ -114,7 +109,6 @@
             <Separator Margin="0,5,0,0" Background="#DDDDDD"/>
         </StackPanel>
 
-        <!-- Bara de căutare -->
         <Grid Grid.Row="1" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -122,7 +116,6 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Câmp Căutare -->
             <Grid Grid.Column="0" Margin="0,0,10,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -145,7 +138,6 @@
                         Style="{StaticResource PrimaryButtonStyle}"/>
             </Grid>
 
-            <!-- Buton Adăugare -->
             <Button x:Name="btnAddNewBook"
                     Grid.Column="2"
                     Click="btnAddNewBook_Click"
@@ -155,7 +147,6 @@
                     Style="{StaticResource PrimaryButtonStyle}"/>
         </Grid>
 
-        <!-- Lista de cărți (DataGrid) -->
         <DataGrid x:Name="dgBooks"
                   MouseDoubleClick="dgBooks_MouseDoubleClick"
                   Grid.Row="2"
@@ -170,14 +161,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Secțiunile de gestionare - în layout de grid cu două coloane -->
         <Grid Grid.Row="3" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Secțiunea Editare Carte -->
             <GroupBox Grid.Column="0" 
                       Header="Update Book" 
                       Style="{StaticResource ManageBoxStyle}"
@@ -195,23 +184,18 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- ID Carte (doar pentru referință) -->
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID:" Style="{StaticResource FieldLabelStyle}" Margin="0,4,10,4"/>
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtEditId" IsReadOnly="True" Style="{StaticResource FieldInputStyle}" Margin="0,4,0,4"/>
 
-                    <!-- Titlu -->
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Title:" Style="{StaticResource FieldLabelStyle}" Margin="0,4,10,4"/>
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtEditTitle" Style="{StaticResource FieldInputStyle}" Margin="0,4,0,4"/>
 
-                    <!-- Autor -->
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Author:" Style="{StaticResource FieldLabelStyle}" Margin="0,4,10,4"/>
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEditAuthor" Style="{StaticResource FieldInputStyle}" Margin="0,4,0,4"/>
 
-                    <!-- Cantitate -->
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Quantity:" Style="{StaticResource FieldLabelStyle}" Margin="0,4,10,4"/>
                     <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtEditQuantity" Style="{StaticResource FieldInputStyle}" Margin="0,4,0,4"/>
 
-                    <!-- Buton Salvare -->
                     <Button Grid.Row="4" Grid.Column="1"
                             x:Name="btnSaveChanges"
                             Click="btnSaveChanges_Click"
@@ -224,7 +208,6 @@
                 </Grid>
             </GroupBox>
 
-            <!-- Secțiunea Ștergere Carte -->
             <GroupBox Grid.Column="1" 
                       Header="Delete Book" 
                       Style="{StaticResource ManageBoxStyle}"
@@ -241,12 +224,9 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- ID Carte pentru ștergere -->
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Book ID:" Style="{StaticResource FieldLabelStyle}" Margin="0,4,10,4"/>
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtDeleteId" IsReadOnly="True" Style="{StaticResource FieldInputStyle}" Margin="0,4,0,4"/>
                     
-
-                    <!-- Buton Ștergere -->
                     <Button Grid.Row="3" Grid.Column="1"
                             x:Name="btnDeleteBook"
                             Content="Delete"
@@ -260,7 +240,6 @@
             </GroupBox>
         </Grid>
 
-        <!-- Informație/Avertisment -->
         <TextBlock Grid.Row="4" 
                    Text="* Double click on row for autocomplete." 
                    FontSize="11"

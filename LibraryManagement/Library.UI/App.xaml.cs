@@ -12,23 +12,19 @@ namespace LibraryManagement
         {
             var app = new App();
 
-            // Setează DataDirectory ÎNAINTE de InitializeComponent
             string dbPath = @"C:\Users\x\Desktop\proiect internship\LibraryManagement\LibraryManagement\Library.Repository\Database";
             AppDomain.CurrentDomain.SetData("DataDirectory", dbPath);
 
             app.InitializeComponent();
 
-            // Setează connection string în Settings
             app.Properties["LibraryConnectionString"] = DatabaseHelper.ConnectionString;
 
-            // Creează și afișează fereastra principală
             var mainWindow = new LibraryManagement.MainWin();
-            app.Run(); // Adaugă mainWindow ca parametru
+            app.Run();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            // Poți să ștergi SetupDataDirectory() dacă nu o mai folosești
             base.OnStartup(e);
         }
     }

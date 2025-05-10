@@ -140,6 +140,11 @@ namespace LibraryManagement.Library.UI
                 MessageBox.Show("Please enter a valid id!");
                 return;
             }
+            if(quantity < 1)
+            {
+                MessageBox.Show("Please enter a valid quantity (1,2,3...).");
+                return;
+            }
             bookService.UpdateBook(title, author, quantity, id);
             MessageBox.Show("Succes!");
             this.txtEditQuantity.Text = "";
