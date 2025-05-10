@@ -1,0 +1,20 @@
+﻿LibraryManagement
+
+
+winexe
+C#
+.cs
+C:\Users\x\Desktop\proiect internship\LibraryManagement\LibraryManagement\obj\Debug\net8.0-windows\
+LibraryManagement
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+
+8-1597377769
+1-1894018585
+24-685146453
+2011803275972
+Library.UI\AddBookWin.xaml;Library.UI\AnalyticsWin.xaml;Library.UI\App.xaml;Library.UI\BorrowBookWin.xaml;Library.UI\MainWin.xaml;Library.UI\ManageBooksWin.xaml;Library.UI\ReturnBookWin.xaml;Library.UI\ViewAllBooksWin.xaml;
+
+False
+

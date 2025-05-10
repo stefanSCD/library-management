@@ -1,0 +1,178 @@
+﻿<Window x:Class="LibraryManagement.Library.UI.BorrowBookWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManagement.Library.UI"
+        mc:Ignorable="d"
+        Title="Borrow Book" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        x:Name="BorrowBookWindow"
+        Closed="BorrowBookWindow_Closed">
+    <Window.Resources>
+        <!-- Stiluri pentru butoane -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="Padding" Value="15,5"/>
+        </Style>
+
+        <!-- Stiluri pentru câmpuri -->
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <Style x:Key="SearchInputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="FieldInputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        </Style>
+
+        <!-- Stiluri pentru DataGrid -->
+        <Style x:Key="BooksDataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        </Style>
+
+        <!-- Stiluri pentru GroupBox -->
+        <Style x:Key="BorrowDetailsStyle" TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
+            <Setter Property="Padding" Value="15"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titlu Fereastră -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Borrow Books"
+                       HorizontalAlignment="Center"
+                       FontSize="24" FontWeight="Bold" 
+                       Foreground="#333333"/>
+            <Separator Margin="0,10,0,0" Background="#DDDDDD"/>
+        </StackPanel>
+
+        <!-- Bara de căutare -->
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Câmp Căutare - MĂRIT -->
+            <Grid Grid.Column="0" Margin="0,0,15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtSearch" 
+                         Grid.Column="0"
+                         Style="{StaticResource SearchInputStyle}" 
+                         MinWidth="450"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Center"
+                         Margin="0,0,10,0"/>
+                <Button x:Name="btnSearch"
+                        Click="btnSearch_Click"
+                        Grid.Column="1"
+                        Content="Search"
+                        Width="100"
+                        Height="35"
+                        FontSize="14"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource PrimaryButtonStyle}"/>
+            </Grid>
+
+        </Grid>
+
+        <!-- Grid cu cărți în partea stângă și detalii împrumut în dreapta -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Listă Cărți (DataGrid) -->
+            <DataGrid x:Name="dgBooks"
+                      Grid.Column="0"
+                      Margin="0,0,20,0"
+                      Style="{StaticResource BooksDataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="60"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="180"/>
+                    <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="90"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Detalii împrumut (GroupBox) -->
+            <GroupBox Grid.Column="1" 
+                      Header="Detalii Împrumut" 
+                      Style="{StaticResource BorrowDetailsStyle}">
+                <StackPanel>
+                    <!-- Book ID -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Book ID:" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox x:Name="txtBookId" Style="{StaticResource FieldInputStyle}"/>
+                    </StackPanel>
+
+                    <!-- Quantity -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Quantity:" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox x:Name="txtQuantity" Style="{StaticResource FieldInputStyle}"/>
+                    </StackPanel>
+
+                    <!-- Borrower Information -->
+                    <StackPanel Margin="0,0,0,15">
+                        <TextBlock Text="Borrower Name:" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox x:Name="txtBorrowerName" Style="{StaticResource FieldInputStyle}"/>
+                    </StackPanel>
+
+                    <!-- Borrow Button -->
+                    <Button x:Name="btnBorrow"
+                            Content="Borrow"
+                            Click="btnBorrow_Click"
+                            Height="40"
+                            Margin="0,15,0,0"
+                            Style="{StaticResource PrimaryButtonStyle}"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

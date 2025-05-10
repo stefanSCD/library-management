@@ -1,0 +1,181 @@
+﻿<Window x:Class="LibraryManagement.Library.UI.AnalyticsWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManagement.Library.UI"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Analytics Dashboard" Height="600" Width="900">
+    <Window.Resources>
+        <!-- Stiluri pentru butoane -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="Padding" Value="15,5"/>
+        </Style>
+
+        <!-- Stiluri pentru câmpuri -->
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <!-- Stiluri pentru DataGrid -->
+        <Style x:Key="BooksDataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        </Style>
+
+        <!-- Stil pentru bordere -->
+        <Style x:Key="DashboardPanelStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Stil pentru titluri -->
+        <Style x:Key="PanelTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
+
+        <!-- Stil pentru ComboBox -->
+        <Style x:Key="FilterComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="20,20,20,10">
+            <TextBlock Text="Library Analytics Dashboard" 
+                       FontSize="24" FontWeight="Bold" 
+                       HorizontalAlignment="Center"
+                       Foreground="#333333"/>
+            <Separator Margin="0,10,0,0" Background="#DDDDDD"/>
+        </StackPanel>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Row - Pie Chart for Most Borrowed Books -->
+            <Border Grid.Row="0" Style="{StaticResource DashboardPanelStyle}">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header with Title and Filter -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Most Borrowed Books" 
+                                  Style="{StaticResource PanelTitleStyle}"/>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text="Show Top:" 
+                                      VerticalAlignment="Center"
+                                      Margin="0,0,5,0"/>
+                            <ComboBox x:Name="cmbTopBooksLimit" 
+                                     Style="{StaticResource FilterComboBoxStyle}">
+                                <ComboBoxItem Content="5" IsSelected="True"/>
+                                <ComboBoxItem Content="10"/>
+                                <ComboBoxItem Content="15"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Pie Chart Area -->
+                    <Grid Grid.Row="1">
+                        <!-- Placeholder pentru chart - va fi înlocuit cu componenta reală -->
+                        <Grid Grid.Row="1">
+                            <Grid x:Name="pieChartContainer" Background="#F9F9F9">
+                                <!-- Chart-ul va fi adăugat dinamic aici -->
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Bottom Row - Line Chart for Borrowed Books Over Time -->
+            <Border Grid.Row="1" Style="{StaticResource DashboardPanelStyle}">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header with Title and Filter -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Borrowed Books Over Time" 
+                                  Style="{StaticResource PanelTitleStyle}"/>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text="Time Period:" 
+                                      VerticalAlignment="Center"
+                                      Margin="0,0,5,0"/>
+                            <ComboBox x:Name="cmbTimePeriod" 
+                                     Style="{StaticResource FilterComboBoxStyle}">
+                                <ComboBoxItem Content="Daily" IsSelected="True"/>
+                                <ComboBoxItem Content="Weekly"/>
+                                <ComboBoxItem Content="Monthly"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Line Chart Area -->
+                    <Grid Grid.Row="1">
+                        <Grid x:Name="lineChartContainer" Background="#F9F9F9">
+                            <!-- Chart-ul va fi adăugat dinamic -->
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

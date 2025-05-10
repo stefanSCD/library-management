@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Library.UI\AddBookWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\AnalyticsWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\BorrowBookWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\MainWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\ManageBooksWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\ReturnBookWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Library.UI\ViewAllBooksWin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Library.Repository\DataAccess\LibraryDataSet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+</Project>

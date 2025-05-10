@@ -1,0 +1,123 @@
+﻿<Window x:Class="LibraryManagement.Library.UI.AddBookWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManagement.Library.UI"
+        mc:Ignorable="d"
+        Title="Add books" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        x:Name="AddBookWindow"
+        Closed="AddBookWindow_Closed">
+    <Window.Resources>
+        <!-- Stiluri pentru butoane -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#EEEEEE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="Padding" Value="15,5"/>
+        </Style>
+
+        <!-- Stiluri pentru câmpuri -->
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <Style x:Key="FieldInputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titlu Fereastră -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,25">
+            <TextBlock Text="Add a new book" 
+                       HorizontalAlignment="Center"
+                       FontSize="24" FontWeight="Bold" 
+                       Foreground="#333333"/>
+            <Separator Margin="0,10,0,0" Background="#DDDDDD"/>
+        </StackPanel>
+
+        <!-- Formular -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Titlu Carte -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                <TextBlock Text="Title:" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox x:Name="txtTitle" Style="{StaticResource FieldInputStyle}"/>
+            </StackPanel>
+
+            <!-- Autor -->
+            <StackPanel Grid.Row="1" Margin="0,0,0,15">
+                <TextBlock Text="Author:" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox x:Name="txtAuthor" Style="{StaticResource FieldInputStyle}"/>
+            </StackPanel>
+
+            <!-- Cantitate -->
+            <StackPanel Grid.Row="2" Margin="0,0,0,15">
+                <TextBlock Text="Quantity:" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox x:Name="txtQuantity" Style="{StaticResource FieldInputStyle}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Butoane Acțiuni -->
+        <Grid Grid.Row="2" Margin="0,25,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Informații -->
+            <TextBlock Grid.Column="0" 
+                       Text="* All fields are required" 
+                       VerticalAlignment="Center" 
+                       Foreground="#888888"
+                       FontStyle="Italic"/>
+
+            <!-- Buton Anulare -->
+            <Button x:Name="btnCancel"
+                    Click="btnCancel_Click"
+                    Grid.Column="1" 
+                    Content="Cancel" 
+                    Width="100" 
+                    Height="35" 
+                    Margin="0,0,15,0"
+                    Style="{StaticResource SecondaryButtonStyle}"/>
+
+            <!-- Buton Adăugare -->
+            <Button x:Name="btnAdd"
+                    Click="btnAdd_Click"
+                    Grid.Column="2" 
+                    Content="Add" 
+                    Width="100" 
+                    Height="35"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+        </Grid>
+    </Grid>
+</Window>
