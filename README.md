@@ -2,7 +2,6 @@
 
 [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.7.2+-purple.svg)](https://dotnet.microsoft.com/download/dotnet-framework)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-LocalDB-red.svg)](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A comprehensive Windows desktop application for managing library operations, built with WPF and SQL Server LocalDB.
 
@@ -27,8 +26,6 @@ Before you begin, ensure you have the following installed:
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) (for development)
 
 ### Installation
-
-#### Option 1: From Source Code
 
 1. **Clone the repository**
    ```bash
