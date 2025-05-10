@@ -16,5 +16,5 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 2011803275972
 Library.UI\AddBookWin.xaml;Library.UI\AnalyticsWin.xaml;Library.UI\App.xaml;Library.UI\BorrowBookWin.xaml;Library.UI\MainWin.xaml;Library.UI\ManageBooksWin.xaml;Library.UI\ReturnBookWin.xaml;Library.UI\ViewAllBooksWin.xaml;
 
-False
+True
 

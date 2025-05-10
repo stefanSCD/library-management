@@ -133,7 +133,7 @@
             </DataGrid>
 
             <GroupBox Grid.Column="1" 
-                      Header="Detalii Împrumut" 
+                      Header="Details" 
                       Style="{StaticResource BorrowDetailsStyle}">
                 <StackPanel>
                     <StackPanel Margin="0,0,0,15">
