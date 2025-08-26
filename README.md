@@ -16,7 +16,6 @@ A comprehensive Windows desktop application for managing library operations, bui
 
 ## 🌟 Innovative Feature: Analytics Dashboard
 
-For requirement #7, I implemented an **Analytics Dashboard** that provides comprehensive insights into library operations through interactive charts and visualizations.
 
 #### 📊 Visual Analytics Components:
 
